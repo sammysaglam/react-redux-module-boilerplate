@@ -1,0 +1,12 @@
+{
+	"library":{
+		"name":"Library" ,
+		"outputFilename":"library" ,
+		"scssEntry":"Library"
+	} ,
+	"redux":{
+		"name":"LibraryRedux" ,
+		"outputFilename":"library.redux" ,
+		"entryPath":"./src/Library.redux.js"
+	}
+}
