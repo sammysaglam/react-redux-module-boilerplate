@@ -6,8 +6,7 @@
 		"analyze": "webpack --env.analyze=true",
 		"lint": "\"./node_modules/.bin/eslint\" src",
 		"lint-fix": "\"./node_modules/.bin/eslint\" src --fix",
-		"test": "jest",
-		"test:watch": "npm test -- --watch"
+		"test": "jest"
 	},
 	"dependencies": {
 		"prop-types": "^15.6.0",
