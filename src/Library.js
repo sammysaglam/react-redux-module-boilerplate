@@ -2,20 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import HelloWorld from './components/HelloWorld/HelloWorld';
 
-const Library = props => (
+const Library = ({increment , integerValue}) => (
 	<div className="library">
 		<HelloWorld world="World"/>
 		<div className="state-management-example">
-			<button onClick={props.increment}>Increment</button>
+			<button onClick={increment} type="button">Increment</button>
 			<br/>
-			<span className="integer-value">{props.integerValue}</span>
+			<span className="integer-value">{integerValue}</span>
 		</div>
 	</div>
 );
 
 Library.propTypes = {
-	integerValue:PropTypes.number.isRequired ,
-	increment:PropTypes.func.isRequired
+	increment:PropTypes.func.isRequired ,
+	integerValue:PropTypes.number.isRequired
 };
 
 export default Library;

@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const HelloWorld = props => (
+const HelloWorld = ({world}) => (
 	<div className="hello-world">
-		<h1>Hello {props.world}!</h1>
+		<h1>Hello {world}! base64 encoded font here</h1>
 		<div>
 			A base64 embedded image:
 		</div>
 		<div className="use-anton-font">
-			An image copied to build folder:
-			<img src="components/HelloWorld/img/like.png"/>
+			The image with text:
+			<img src={require('./img/like.png')}/>
 		</div>
 	</div>
 );

@@ -18,12 +18,8 @@ export const reducer = (state = {integerValue:8} , action = {}) => {
 };
 
 // action Creators
-export const actionCreators = () => {
-	const increment = () => ({
+export const actionCreators = {
+	increment:() => ({
 		type:ACTIONS.INCREMENT
-	});
-
-	return {
-		increment
-	}
+	})
 };

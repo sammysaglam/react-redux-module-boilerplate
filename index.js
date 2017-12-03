@@ -1,3 +1,3 @@
-import Library from './src/Library.js';
+import Library from './dist/library.umd.js';
 
-module.exports = Library;
+export default = Library;
