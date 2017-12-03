@@ -33,6 +33,44 @@ const buildLibrary = ({
 			library:'Library' ,
 			libraryTarget:'umd'
 		} ,
+		externals:{
+			'react':{
+				commonjs:'react' ,
+				commonjs2:'react' ,
+				amd:'react' ,
+				root:'React'
+			} ,
+			'react-dom':{
+				commonjs:'react-dom' ,
+				commonjs2:'react-dom' ,
+				amd:'react-dom' ,
+				root:'ReactDOM'
+			} ,
+			'prop-types':{
+				commonjs:'prop-types' ,
+				commonjs2:'prop-types' ,
+				amd:'prop-types' ,
+				root:'PropTypes'
+			} ,
+			'redux':{
+				commonjs:'redux' ,
+				commonjs2:'redux' ,
+				amd:'redux' ,
+				root:'Redux'
+			} ,
+			'react-redux':{
+				commonjs:'react-redux' ,
+				commonjs2:'react-redux' ,
+				amd:'react-redux' ,
+				root:'ReactRedux'
+			} ,
+			'redux-thunk':{
+				commonjs:'redux-thunk' ,
+				commonjs2:'redux-thunk' ,
+				amd:'redux-thunk' ,
+				root:'ReduxThunk'
+			}
+		} ,
 		plugins:[
 			...extractThemes ,
 			extractCss ,
