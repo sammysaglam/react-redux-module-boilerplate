@@ -23,7 +23,7 @@ module.exports = env => {
 			outputPath:path.resolve(__dirname , 'dist') ,
 			isHotLoaderEnv ,
 			isMinified:false ,
-			analyzeBuild
+			analyzeBuild:false
 		}) ,
 
 		// minified library

@@ -3,7 +3,7 @@
 		"dev": "webpack-dev-server --hot --history-api-fallback --env.hot=true",
 		"watch": "webpack --progress --watch",
 		"build": "webpack",
-		"analyze": "webpack -p --env.analyze=true",
+		"analyze": "webpack --env.analyze=true",
 		"lint": "\"./node_modules/.bin/eslint\" src",
 		"lint-fix": "\"./node_modules/.bin/eslint\" src --fix",
 		"test": "jest",

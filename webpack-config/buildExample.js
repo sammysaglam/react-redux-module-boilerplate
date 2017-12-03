@@ -80,7 +80,7 @@ const buildExample = ({
 		externals:{} ,
 		plugins:[
 			extractCss ,
-			new CleanWebpackPlugin('example') ,
+			new CleanWebpackPlugin('example', {root:outputPath + '/..'}) ,
 			copyExampleFiles(isHotLoaderEnv) ,
 
 			...(isHotLoaderEnv ? [

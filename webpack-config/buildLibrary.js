@@ -1,6 +1,7 @@
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const extractCssGenerator = require('./extractCss');
 const {themes , extractThemesGenerator} = require('./extractThemes');
@@ -37,7 +38,7 @@ const buildLibrary = ({
 			extractCss ,
 
 			...(isMinified ? [
-				new CleanWebpackPlugin('dist') ,
+				new CleanWebpackPlugin('dist' , {root:outputPath + '/..'}) ,
 				new ImageminPlugin() ,
 				new OptimizeCssAssetsPlugin({
 					assetNameRegExp:/\.(scss|css)$/g
@@ -52,7 +53,7 @@ const buildLibrary = ({
 				}) ,
 				...(analyzeBuild ? [
 					new BundleAnalyzerPlugin({
-						analyzerMode:'static'
+						analyzerMode:'server'
 					})
 				] : [])
 			] : [])
