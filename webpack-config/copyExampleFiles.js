@@ -1,5 +1,8 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+const moduleSettings = require('./module.config');
+const defaultTheme = moduleSettings.example.defaultTheme;
+
 const copyExampleFiles = isHotLoaderEnv => new CopyWebpackPlugin([
 	{
 		from:{glob:'**/*.+(html|json|png|svg|jpg|jpeg|gif|ttf|woff|eot)'} ,
@@ -24,7 +27,7 @@ const copyExampleFiles = isHotLoaderEnv => new CopyWebpackPlugin([
 
 							fileContents.toString().replace(
 								/<\/title>/ ,
-								'</title>\n\t\t<link rel="stylesheet" href="../dist/library.css"/>\n\t\t<link rel="stylesheet" href="example.css"/>\n\t\t<link rel="stylesheet" href="../dist/themes/theme-1/theme-1.css"/>'
+								`</title>\n\t\t<link rel="stylesheet" href="../dist/${moduleSettings.library.filename}.css"/>\n\t\t<link rel="stylesheet" href="example.css"/>\n\t\t<link rel="stylesheet" href="../dist/themes/${defaultTheme}/${defaultTheme}.css"/>`
 							)
 					);
 
