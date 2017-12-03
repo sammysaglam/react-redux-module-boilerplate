@@ -1,5 +1,7 @@
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
+const moduleSettings = require('./module.config');
+
 const buildReduxLibrary = ({
 	outputPath ,
 	isMinified
@@ -7,12 +9,12 @@ const buildReduxLibrary = ({
 }) => ({
 	...(isMinified ? {} : {devtool:'source-map'}) ,
 	entry:{
-		'library-redux':'./src/Library.redux'
+		[moduleSettings.reduxLibrary.filename]:`./src/${moduleSettings.library.name}.redux`
 	} ,
 	output:{
 		path:outputPath ,
 		filename:`[name]${isMinified ? '.min' : ''}.js` ,
-		library:'LibraryRedux' ,
+		library:`${moduleSettings.reduxLibrary.name}` ,
 		libraryTarget:'umd'
 	} ,
 	module:{

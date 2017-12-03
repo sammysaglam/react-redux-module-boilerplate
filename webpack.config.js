@@ -1,5 +1,7 @@
 const path = require('path');
 
+const moduleSettings = require('./webpack-config/module.config');
+
 const buildExample = require('./webpack-config/buildExample');
 const buildLibrary = require('./webpack-config/buildLibrary');
 const buildReduxLibrary = require('./webpack-config/buildRedux');
@@ -36,19 +38,24 @@ module.exports = env => {
 			})
 		]) ,
 
+		// redux library
+		...(moduleSettings.reduxLibrary ? [
 
-		// build redux library
-		buildReduxLibrary({
-			outputPath:path.resolve(__dirname , 'dist') ,
-			isMinified:false
-		}) ,
 
-		// minified redux library
-		...(isHotLoaderEnv ? [] : [
+			// build redux library
 			buildReduxLibrary({
 				outputPath:path.resolve(__dirname , 'dist') ,
-				isMinified:true
-			})
-		])
+				isMinified:false
+			}) ,
+
+			// minified redux library
+			...(isHotLoaderEnv ? [] : [
+				buildReduxLibrary({
+					outputPath:path.resolve(__dirname , 'dist') ,
+					isMinified:true
+				})
+			])
+
+		] : [])
 	];
 };

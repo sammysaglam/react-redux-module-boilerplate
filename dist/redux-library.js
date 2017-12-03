@@ -4,9 +4,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define([], factory);
 	else if(typeof exports === 'object')
-		exports["LibraryRedux"] = factory();
+		exports["ReduxLibrary"] = factory();
 	else
-		root["LibraryRedux"] = factory();
+		root["ReduxLibrary"] = factory();
 })(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -132,4 +132,4 @@ var _temp = function () {
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=library-redux.js.map
+//# sourceMappingURL=redux-library.js.map

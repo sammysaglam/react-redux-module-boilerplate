@@ -6,6 +6,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const extractCssGenerator = require('./extractCss');
 const {themes , extractThemesGenerator} = require('./extractThemes');
 
+const moduleSettings = require('./module.config');
+
 const buildLibrary = ({
 	outputPath ,
 	isHotLoaderEnv ,
@@ -20,17 +22,17 @@ const buildLibrary = ({
 	return ({
 		...(isMinified ? {} : {devtool:'source-map'}) ,
 		entry:{
-			'library':[
+			[moduleSettings.library.filename]:[
 				...(themes.map(themeName => './src/themes/' + themeName + '/' + themeName + '.scss')) ,
-				'./src/Library' ,
-				'./src/Library.scss'
+				`./src/${moduleSettings.library.name}` ,
+				`./src/${moduleSettings.library.name}.scss`
 			]
 		} ,
 		output:{
 			path:outputPath ,
 			filename:`[name]${isMinified ? '.min' : ''}.js` ,
 			libraryExport:'default' ,
-			library:'Library' ,
+			library:moduleSettings.library.name ,
 			libraryTarget:'umd'
 		} ,
 		externals:{

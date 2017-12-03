@@ -6,6 +6,9 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const extractCssGenerator = require('./extractCss');
 const copyExampleFiles = require('./copyExampleFiles');
 
+const moduleSettings = require('./module.config');
+const defaultTheme = moduleSettings.example.defaultTheme;
+
 const buildExample = ({
 	outputPath ,
 	isHotLoaderEnv
@@ -22,8 +25,8 @@ const buildExample = ({
 						'babel-polyfill' ,
 						'react-hot-loader/patch' ,
 						'./src/example/entry' ,
-						'./src/themes/theme-1/theme-1.scss' ,
-						'./src/Library.scss' ,
+						...(defaultTheme ? [`./src/themes/${defaultTheme}/${defaultTheme}.scss`] : []) ,
+						`./src/${moduleSettings.library.name}.scss` ,
 						'./src/example/entry.scss'
 					] :
 					[
@@ -80,14 +83,14 @@ const buildExample = ({
 		externals:{} ,
 		plugins:[
 			extractCss ,
-			new CleanWebpackPlugin('example', {root:outputPath + '/..'}) ,
+			new CleanWebpackPlugin('example' , {root:outputPath + '/..'}) ,
 			copyExampleFiles(isHotLoaderEnv) ,
 
 			...(isHotLoaderEnv ? [
 				new OpenBrowserPlugin({url:'http://localhost:9032'})
 
 			] : [
-				new ImageminPlugin(),
+				new ImageminPlugin() ,
 				new OptimizeCssAssetsPlugin({
 					assetNameRegExp:/\.(scss|css)$/g
 				}) ,
@@ -98,7 +101,7 @@ const buildExample = ({
 							comments:false
 						}
 					}
-				}) ,
+				})
 			])
 		]
 	});
