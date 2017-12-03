@@ -15,7 +15,7 @@ const buildLibrary = ({
 }) => {
 
 	const extractCss = extractCssGenerator(isHotLoaderEnv , isMinified);
-	const extractThemes = extractThemesGenerator(isMinified);
+	const extractThemes = extractThemesGenerator(isHotLoaderEnv , isMinified);
 
 	return ({
 		...(isMinified ? {} : {devtool:'source-map'}) ,
@@ -110,10 +110,14 @@ const buildLibrary = ({
 				} ,
 				...(themes.map((themeName , index) => ({
 					test:new RegExp(themeName + '.scss$') ,
-					loader:extractThemes[index].extract([
-						'css-loader' ,
-						'sass-loader'
-					])
+					loader:extractThemes[index].extract({
+						use:[
+							'css-loader' ,
+							'sass-loader'
+						] ,
+						fallback:'style-loader'
+					}) ,
+					include:/themes/
 				}))) ,
 				{
 					test:/\.(scss|css)$/ ,

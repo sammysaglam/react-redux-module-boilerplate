@@ -2,9 +2,9 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const extractCssGenerator = require('./extractCss');
+const copyExampleFiles = require('./copyExampleFiles');
 
 const buildExample = ({
 	outputPath ,
@@ -22,6 +22,7 @@ const buildExample = ({
 						'babel-polyfill' ,
 						'react-hot-loader/patch' ,
 						'./src/example/entry' ,
+						'./src/themes/theme-1/theme-1.scss' ,
 						'./src/Library.scss' ,
 						'./src/example/entry.scss'
 					] :
@@ -72,8 +73,7 @@ const buildExample = ({
 							'sass-loader'
 						] ,
 						fallback:'style-loader'
-					}) ,
-					exclude:/themes/
+					})
 				}
 			]
 		} ,
@@ -103,44 +103,5 @@ const buildExample = ({
 		]
 	});
 };
-
-const copyExampleFiles = isHotLoaderEnv => new CopyWebpackPlugin([
-	{
-		from:{glob:'**/*.+(html|json|png|svg|jpg|jpeg|gif|ttf|woff|eot)'} ,
-		context:'src/example' ,
-		to:isHotLoaderEnv ? './[path]/[name].[ext]' : '../example/[path]/[name].[ext]' ,
-		transform:(fileContents , filepath) => {
-
-			// get file extension
-			const fileExt = filepath.split('.').pop().toLowerCase();
-
-			// minify HTML
-			switch (fileExt) {
-				case 'html':
-
-					// inject css files link tags into head tag
-					return (
-						isHotLoaderEnv ?
-
-							fileContents
-
-							:
-
-							fileContents.toString().replace(/<\/title>/ , '</title>\n\t\t<link rel="stylesheet" href="../dist/library.css"/>\n\t\t<link rel="stylesheet" href="example.css"/>')
-					);
-
-				default:
-					return fileContents;
-
-			}
-
-		}
-	}
-] , {
-	ignore:[
-		{glob:'**/_*/**'} ,
-		{glob:'**/_*'}
-	]
-});
 
 module.exports = buildExample;
