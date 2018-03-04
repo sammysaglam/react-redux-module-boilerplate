@@ -1,6 +1,7 @@
 {
 	"scripts": {
-		"dev": "webpack-dev-server --hot --history-api-fallback --env.hot=true",
+		"dev": "npm run start",
+		"start": "webpack-dev-server --hot --history-api-fallback --env.hot=true",
 		"watch": "webpack --progress --watch",
 		"build": "webpack",
 		"analyze": "webpack --env.analyze=true",
