@@ -15,6 +15,7 @@ const buildExample = ({ outputPath, isHotLoaderEnv }) => {
 
 	return {
 		devtool: 'source-map',
+		mode: 'development',
 		entry: {
 			example: isHotLoaderEnv
 				? [

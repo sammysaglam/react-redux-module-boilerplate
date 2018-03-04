@@ -5,6 +5,7 @@ const moduleSettings = require('./module.config');
 
 const buildReduxLibrary = ({ outputPath, isMinified }) => ({
 	...(isMinified ? {} : { devtool: 'source-map' }),
+	mode: isMinified ? 'development' : 'production',
 	entry: {
 		[moduleSettings.reduxLibrary.filename]: `./src/${moduleSettings.library.name}.redux`
 	},

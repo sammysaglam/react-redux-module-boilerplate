@@ -15,6 +15,7 @@ const buildLibrary = ({ outputPath, isHotLoaderEnv, isMinified, analyzeBuild }) 
 
 	return {
 		...(isMinified ? {} : { devtool: 'source-map' }),
+		mode: isMinified ? 'development' : 'production',
 		entry: {
 			[moduleSettings.library.filename]: [
 				...themes.map(themeName => './src/themes/' + themeName + '/' + themeName + '.scss'),
