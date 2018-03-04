@@ -26,7 +26,7 @@ const render = App => {
 render(Library);
 
 if (module.hot) {
-	module.hot.accept('../Library', () => {
+	module.hot.accept('./Library.redux-connected', () => {
 		render(Library);
 	});
 }
