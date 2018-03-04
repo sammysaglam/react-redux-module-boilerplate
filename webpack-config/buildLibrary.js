@@ -1,3 +1,4 @@
+const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -131,6 +132,12 @@ const buildLibrary = ({ outputPath, isHotLoaderEnv, isMinified, analyzeBuild }) 
 					exclude: /themes/
 				}
 			]
+		},
+		resolve: {
+			alias: {
+				// eslint-disable-next-line no-undef
+				'prop-types$': path.join(__dirname, '../node_modules/axe-prop-types')
+			}
 		}
 	};
 };

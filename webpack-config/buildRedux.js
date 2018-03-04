@@ -1,3 +1,4 @@
+const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const moduleSettings = require('./module.config');
@@ -33,7 +34,13 @@ const buildReduxLibrary = ({ outputPath, isMinified }) => ({
 					}
 				})
 		  ]
-		: []
+		: [],
+	resolve: {
+		alias: {
+			// eslint-disable-next-line no-undef
+			'prop-types$': path.join(__dirname, '../node_modules/axe-prop-types')
+		}
+	}
 });
 
 module.exports = buildReduxLibrary;
