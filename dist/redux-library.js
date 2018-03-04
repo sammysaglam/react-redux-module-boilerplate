@@ -120,11 +120,11 @@ var _temp = function () {
 		return;
 	}
 
-	__REACT_HOT_LOADER__.register(ACTIONS, 'ACTIONS', 'N:/Dropbox/SAMS/boilerplates/react-redux-module-boilerplate/src/Library.redux.js');
+	__REACT_HOT_LOADER__.register(ACTIONS, 'ACTIONS', '/home/sammysaglam/work/boilerplates/react-redux-module-boilerplate/src/Library.redux.js');
 
-	__REACT_HOT_LOADER__.register(reducer, 'reducer', 'N:/Dropbox/SAMS/boilerplates/react-redux-module-boilerplate/src/Library.redux.js');
+	__REACT_HOT_LOADER__.register(reducer, 'reducer', '/home/sammysaglam/work/boilerplates/react-redux-module-boilerplate/src/Library.redux.js');
 
-	__REACT_HOT_LOADER__.register(actionCreators, 'actionCreators', 'N:/Dropbox/SAMS/boilerplates/react-redux-module-boilerplate/src/Library.redux.js');
+	__REACT_HOT_LOADER__.register(actionCreators, 'actionCreators', '/home/sammysaglam/work/boilerplates/react-redux-module-boilerplate/src/Library.redux.js');
 }();
 
 ;

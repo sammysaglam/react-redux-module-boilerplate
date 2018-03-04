@@ -161,9 +161,9 @@ var _temp = function () {
 		return;
 	}
 
-	__REACT_HOT_LOADER__.register(Library, 'Library', 'N:/Dropbox/SAMS/boilerplates/react-redux-module-boilerplate/src/Library.js');
+	__REACT_HOT_LOADER__.register(Library, 'Library', '/home/sammysaglam/work/boilerplates/react-redux-module-boilerplate/src/Library.js');
 
-	__REACT_HOT_LOADER__.register(_default, 'default', 'N:/Dropbox/SAMS/boilerplates/react-redux-module-boilerplate/src/Library.js');
+	__REACT_HOT_LOADER__.register(_default, 'default', '/home/sammysaglam/work/boilerplates/react-redux-module-boilerplate/src/Library.js');
 }();
 
 ;
@@ -200,7 +200,7 @@ var HelloWorld = function HelloWorld(_ref) {
 		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 			'div',
 			{ className: 'use-anton-font' },
-			'The image with text:',
+			'The image with text: ',
 			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __webpack_require__(7) })
 		)
 	);
@@ -219,9 +219,9 @@ var _temp = function () {
 		return;
 	}
 
-	__REACT_HOT_LOADER__.register(HelloWorld, 'HelloWorld', 'N:/Dropbox/SAMS/boilerplates/react-redux-module-boilerplate/src/components/HelloWorld/HelloWorld.js');
+	__REACT_HOT_LOADER__.register(HelloWorld, 'HelloWorld', '/home/sammysaglam/work/boilerplates/react-redux-module-boilerplate/src/components/HelloWorld/HelloWorld.js');
 
-	__REACT_HOT_LOADER__.register(_default, 'default', 'N:/Dropbox/SAMS/boilerplates/react-redux-module-boilerplate/src/components/HelloWorld/HelloWorld.js');
+	__REACT_HOT_LOADER__.register(_default, 'default', '/home/sammysaglam/work/boilerplates/react-redux-module-boilerplate/src/components/HelloWorld/HelloWorld.js');
 }();
 
 ;

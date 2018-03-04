@@ -7,55 +7,60 @@ const buildLibrary = require('./webpack-config/buildLibrary');
 const buildReduxLibrary = require('./webpack-config/buildRedux');
 
 module.exports = env => {
-
 	const analyzeBuild = env && env.analyze;
 	const isHotLoaderEnv = env && env.hot;
 
 	return [
-
 		// build example
 		buildExample({
-			outputPath:path.resolve(__dirname , isHotLoaderEnv ? '' : 'example') ,
+			// eslint-disable-next-line no-undef
+			outputPath: path.resolve(__dirname, isHotLoaderEnv ? '' : 'example'),
 			isHotLoaderEnv
-		}) ,
-
+		}),
 
 		// build library
 		buildLibrary({
-			outputPath:path.resolve(__dirname , 'dist') ,
-			isHotLoaderEnv ,
-			isMinified:false ,
-			analyzeBuild:false
-		}) ,
+			// eslint-disable-next-line no-undef
+			outputPath: path.resolve(__dirname, 'dist'),
+			isHotLoaderEnv,
+			isMinified: false,
+			analyzeBuild: false
+		}),
 
 		// minified library
-		...(isHotLoaderEnv ? [] : [
-			buildLibrary({
-				outputPath:path.resolve(__dirname , 'dist') ,
-				isHotLoaderEnv ,
-				isMinified:true ,
-				analyzeBuild
-			})
-		]) ,
+		...(isHotLoaderEnv
+			? []
+			: [
+					buildLibrary({
+						// eslint-disable-next-line no-undef
+						outputPath: path.resolve(__dirname, 'dist'),
+						isHotLoaderEnv,
+						isMinified: true,
+						analyzeBuild
+					})
+			  ]),
 
 		// redux library
-		...(moduleSettings.reduxLibrary ? [
+		...(moduleSettings.reduxLibrary
+			? [
+					// build redux library
+					buildReduxLibrary({
+						// eslint-disable-next-line no-undef
+						outputPath: path.resolve(__dirname, 'dist'),
+						isMinified: false
+					}),
 
-
-			// build redux library
-			buildReduxLibrary({
-				outputPath:path.resolve(__dirname , 'dist') ,
-				isMinified:false
-			}) ,
-
-			// minified redux library
-			...(isHotLoaderEnv ? [] : [
-				buildReduxLibrary({
-					outputPath:path.resolve(__dirname , 'dist') ,
-					isMinified:true
-				})
-			])
-
-		] : [])
+					// minified redux library
+					...(isHotLoaderEnv
+						? []
+						: [
+								buildReduxLibrary({
+									// eslint-disable-next-line no-undef
+									outputPath: path.resolve(__dirname, 'dist'),
+									isMinified: true
+								})
+						  ])
+			  ]
+			: [])
 	];
 };
