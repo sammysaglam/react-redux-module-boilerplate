@@ -26,7 +26,7 @@ const buildExample = ({ outputPath, isHotLoaderEnv }) => {
 						`./src/${moduleSettings.library.name}.scss`,
 						'./src/example/entry.scss'
 				  ]
-				: ['./src/example/entry', './src/example/entry.scss']
+				: ['babel-polyfill', './src/example/entry', './src/example/entry.scss']
 		},
 		output: {
 			path: outputPath,
