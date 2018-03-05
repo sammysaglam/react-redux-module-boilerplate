@@ -5,7 +5,7 @@ module.exports = {
 	},
 	reduxLibrary: {
 		name: 'ReduxLibrary',
-		filename: 'redux-library'
+		filename: 'library.redux'
 	},
 	example: {
 		defaultTheme: 'theme-1'

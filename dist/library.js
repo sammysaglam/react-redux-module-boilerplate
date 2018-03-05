@@ -2,7 +2,7 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("react"), require("prop-types"));
 	else if(typeof define === 'function' && define.amd)
-		define(["react", "prop-types"], factory);
+		define("Library", ["react", "prop-types"], factory);
 	else if(typeof exports === 'object')
 		exports["Library"] = factory(require("react"), require("prop-types"));
 	else
@@ -344,15 +344,15 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADD
 
 /***/ 0:
 /*!**************************************************************************************************************************!*\
-  !*** multi ./src/themes/apple-theme/apple-theme.scss ./src/themes/theme-1/theme-1.scss ./src/Library ./src/Library.scss ***!
+  !*** multi ./src/themes/apple-theme/apple-theme.scss ./src/themes/theme-1/theme-1.scss ./src/Library.scss ./src/Library ***!
   \**************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ./src/themes/apple-theme/apple-theme.scss */"./src/themes/apple-theme/apple-theme.scss");
 __webpack_require__(/*! ./src/themes/theme-1/theme-1.scss */"./src/themes/theme-1/theme-1.scss");
-__webpack_require__(/*! ./src/Library */"./src/Library.js");
-module.exports = __webpack_require__(/*! ./src/Library.scss */"./src/Library.scss");
+__webpack_require__(/*! ./src/Library.scss */"./src/Library.scss");
+module.exports = __webpack_require__(/*! ./src/Library */"./src/Library.js");
 
 
 /***/ }),
@@ -379,6 +379,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_react__;
 
 /***/ })
 
-/******/ })["default"];
+/******/ });
 });
 //# sourceMappingURL=library.js.map

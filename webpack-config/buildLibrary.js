@@ -19,16 +19,16 @@ const buildLibrary = ({ outputPath, isHotLoaderEnv, isMinified, analyzeBuild }) 
 		entry: {
 			[moduleSettings.library.filename]: [
 				...themes.map(themeName => './src/themes/' + themeName + '/' + themeName + '.scss'),
-				`./src/${moduleSettings.library.name}`,
-				`./src/${moduleSettings.library.name}.scss`
+				`./src/${moduleSettings.library.name}.scss`,
+				`./src/${moduleSettings.library.name}`
 			]
 		},
 		output: {
 			path: outputPath,
 			filename: `[name]${isMinified ? '.min' : ''}.js`,
-			libraryExport: 'default',
 			library: moduleSettings.library.name,
-			libraryTarget: 'umd'
+			libraryTarget: 'umd',
+			umdNamedDefine: true
 		},
 		externals: {
 			react: {
@@ -74,27 +74,27 @@ const buildLibrary = ({ outputPath, isHotLoaderEnv, isMinified, analyzeBuild }) 
 
 			...(isMinified
 				? [
-					new CleanWebpackPlugin('dist', { root: outputPath + '/..' }),
-					new ImageminPlugin(),
-					new OptimizeCssAssetsPlugin({
-						assetNameRegExp: /\.(scss|css)$/g
-					}),
-					new UglifyJSPlugin({
-						uglifyOptions: {
-							compress: true,
-							output: {
-								comments: false
+						new CleanWebpackPlugin('dist', { root: outputPath + '/..' }),
+						new ImageminPlugin(),
+						new OptimizeCssAssetsPlugin({
+							assetNameRegExp: /\.(scss|css)$/g
+						}),
+						new UglifyJSPlugin({
+							uglifyOptions: {
+								compress: true,
+								output: {
+									comments: false
+								}
 							}
-						}
-					}),
-					...(analyzeBuild
-						? [
-							new BundleAnalyzerPlugin({
-								analyzerMode: 'server'
-							})
-						]
-						: [])
-				]
+						}),
+						...(analyzeBuild
+							? [
+									new BundleAnalyzerPlugin({
+										analyzerMode: 'server'
+									})
+							  ]
+							: [])
+				  ]
 				: [])
 		],
 		module: {

@@ -1,3 +1,1 @@
-import LibraryRedux from './dist/library.redux.umd.js';
-
-export default LibraryRedux;
+module.exports = require('./dist/library.redux');

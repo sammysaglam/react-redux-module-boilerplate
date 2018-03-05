@@ -13,7 +13,8 @@ const buildReduxLibrary = ({ outputPath, isMinified }) => ({
 		path: outputPath,
 		filename: `[name]${isMinified ? '.min' : ''}.js`,
 		library: `${moduleSettings.reduxLibrary.name}`,
-		libraryTarget: 'umd'
+		libraryTarget: 'umd',
+		umdNamedDefine: true
 	},
 	module: {
 		rules: [
