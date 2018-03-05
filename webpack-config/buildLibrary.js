@@ -15,7 +15,7 @@ const buildLibrary = ({ outputPath, isHotLoaderEnv, isMinified, analyzeBuild }) 
 
 	return {
 		...(isMinified ? {} : { devtool: 'source-map' }),
-		mode: isMinified ? 'development' : 'production',
+		mode: isMinified ? 'production' : 'development',
 		entry: {
 			[moduleSettings.library.filename]: [
 				...themes.map(themeName => './src/themes/' + themeName + '/' + themeName + '.scss'),
@@ -74,27 +74,27 @@ const buildLibrary = ({ outputPath, isHotLoaderEnv, isMinified, analyzeBuild }) 
 
 			...(isMinified
 				? [
-						new CleanWebpackPlugin('dist', { root: outputPath + '/..' }),
-						new ImageminPlugin(),
-						new OptimizeCssAssetsPlugin({
-							assetNameRegExp: /\.(scss|css)$/g
-						}),
-						new UglifyJSPlugin({
-							uglifyOptions: {
-								compress: true,
-								output: {
-									comments: false
-								}
+					new CleanWebpackPlugin('dist', { root: outputPath + '/..' }),
+					new ImageminPlugin(),
+					new OptimizeCssAssetsPlugin({
+						assetNameRegExp: /\.(scss|css)$/g
+					}),
+					new UglifyJSPlugin({
+						uglifyOptions: {
+							compress: true,
+							output: {
+								comments: false
 							}
-						}),
-						...(analyzeBuild
-							? [
-									new BundleAnalyzerPlugin({
-										analyzerMode: 'server'
-									})
-							  ]
-							: [])
-				  ]
+						}
+					}),
+					...(analyzeBuild
+						? [
+							new BundleAnalyzerPlugin({
+								analyzerMode: 'server'
+							})
+						]
+						: [])
+				]
 				: [])
 		],
 		module: {
