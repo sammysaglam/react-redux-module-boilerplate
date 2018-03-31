@@ -8,14 +8,14 @@ import Library from '../src/Library';
 function setup() {
 	const props = {
 		increment: jest.fn(),
-		integerValue: 45
+		integerValue: 45,
 	};
 
 	const enzymeWrapper = mount(<Library {...props} />);
 
 	return {
 		props,
-		enzymeWrapper
+		enzymeWrapper,
 	};
 }
 

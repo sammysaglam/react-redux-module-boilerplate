@@ -9,7 +9,7 @@ import { reducer } from '../Library.redux';
 
 // redux init
 const reducers = combineReducers({
-	library: reducer
+	library: reducer,
 });
 const store = createStore(reducers);
 
@@ -20,7 +20,7 @@ const render = App => {
 				<App />
 			</Provider>
 		</AppContainer>,
-		document.getElementById('target')
+		document.getElementById('target'),
 	);
 };
 render(Library);

@@ -12,7 +12,7 @@ const HelloWorld = ({ world }) => (
 );
 
 HelloWorld.propTypes = {
-	world: PropTypes.string.isRequired
+	world: PropTypes.string.isRequired,
 };
 
 export default HelloWorld;

@@ -7,23 +7,23 @@ const buildReduxLibrary = ({ outputPath, isMinified }) => ({
 	...(isMinified ? {} : { devtool: 'source-map' }),
 	mode: isMinified ? 'production' : 'development',
 	entry: {
-		[moduleSettings.reduxLibrary.filename]: `./src/${moduleSettings.library.name}.redux`
+		[moduleSettings.reduxLibrary.filename]: `./src/${moduleSettings.library.name}.redux`,
 	},
 	output: {
 		path: outputPath,
 		filename: `[name]${isMinified ? '.min' : ''}.js`,
 		library: `${moduleSettings.reduxLibrary.name}`,
 		libraryTarget: 'umd',
-		umdNamedDefine: true
+		umdNamedDefine: true,
 	},
 	module: {
 		rules: [
 			{
 				test: /\.js$/,
 				loader: 'babel-loader',
-				exclude: /node_modules/
-			}
-		]
+				exclude: /node_modules/,
+			},
+		],
 	},
 	plugins: isMinified
 		? [
@@ -31,18 +31,18 @@ const buildReduxLibrary = ({ outputPath, isMinified }) => ({
 					uglifyOptions: {
 						compress: true,
 						output: {
-							comments: false
-						}
-					}
-				})
+							comments: false,
+						},
+					},
+				}),
 		  ]
 		: [],
 	resolve: {
 		alias: {
 			// eslint-disable-next-line no-undef
-			'prop-types$': path.join(__dirname, '../node_modules/axe-prop-types')
-		}
-	}
+			'prop-types$': path.join(__dirname, '../node_modules/axe-prop-types'),
+		},
+	},
 });
 
 module.exports = buildReduxLibrary;

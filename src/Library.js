@@ -17,7 +17,7 @@ const Library = ({ increment, integerValue }) => (
 
 Library.propTypes = {
 	increment: PropTypes.func.isRequired,
-	integerValue: PropTypes.number.isRequired
+	integerValue: PropTypes.number.isRequired,
 };
 
 export default Library;

@@ -1,6 +1,6 @@
 // actions
 export const ACTIONS = {
-	INCREMENT: 'library/INCREMENT'
+	INCREMENT: 'library/INCREMENT',
 };
 
 // reducer
@@ -9,7 +9,7 @@ export const reducer = (state = { integerValue: 8 }, action = {}) => {
 		case ACTIONS.INCREMENT:
 			return {
 				...state,
-				integerValue: state.integerValue + 1
+				integerValue: state.integerValue + 1,
 			};
 
 		default:
@@ -20,6 +20,6 @@ export const reducer = (state = { integerValue: 8 }, action = {}) => {
 // action Creators
 export const actionCreators = {
 	increment: () => ({
-		type: ACTIONS.INCREMENT
-	})
+		type: ACTIONS.INCREMENT,
+	}),
 };

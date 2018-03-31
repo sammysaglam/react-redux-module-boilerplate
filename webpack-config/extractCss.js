@@ -5,7 +5,7 @@ const extractCssGenerator = (isHotLoaderEnv, isMinified = false) =>
 		filename(getPath) {
 			return getPath(`[name]${isMinified ? '.min' : ''}.css`);
 		},
-		...(isHotLoaderEnv ? { disable: true } : {})
+		...(isHotLoaderEnv ? { disable: true } : {}),
 	});
 
 module.exports = extractCssGenerator;

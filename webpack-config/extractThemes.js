@@ -12,11 +12,11 @@ const extractThemesGenerator = (isHotLoaderEnv, isMinified = false) =>
 				filename(getPath) {
 					return getPath('themes/' + themeName + '/' + themeName + (isMinified ? '.min' : '') + '.css');
 				},
-				...(isHotLoaderEnv ? { disable: true } : {})
-			})
+				...(isHotLoaderEnv ? { disable: true } : {}),
+			}),
 	);
 
 module.exports = {
 	themes,
-	extractThemesGenerator
+	extractThemesGenerator,
 };

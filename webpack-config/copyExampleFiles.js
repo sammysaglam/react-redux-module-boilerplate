@@ -29,18 +29,18 @@ const copyExampleFiles = isHotLoaderEnv =>
 											/<\/title>/,
 											`</title>\n\t\t<link rel="stylesheet" href="../dist/${
 												moduleSettings.library.filename
-											}.css"/>\n\t\t<link rel="stylesheet" href="example.css"/>\n\t\t<link rel="stylesheet" href="../dist/themes/${defaultTheme}/${defaultTheme}.css"/>`
+											}.css"/>\n\t\t<link rel="stylesheet" href="example.css"/>\n\t\t<link rel="stylesheet" href="../dist/themes/${defaultTheme}/${defaultTheme}.css"/>`,
 										);
 
 						default:
 							return fileContents;
 					}
-				}
-			}
+				},
+			},
 		],
 		{
-			ignore: [{ glob: '**/_*/**' }, { glob: '**/_*' }]
-		}
+			ignore: [{ glob: '**/_*/**' }, { glob: '**/_*' }],
+		},
 	);
 
 module.exports = copyExampleFiles;

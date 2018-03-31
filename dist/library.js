@@ -213,8 +213,8 @@ var _default = Library;
 		return;
 	}
 
-	reactHotLoader.register(Library, 'Library', '/home/sammysaglam/work/boilerplates/react-redux-module-boilerplate/src/Library.js');
-	reactHotLoader.register(_default, 'default', '/home/sammysaglam/work/boilerplates/react-redux-module-boilerplate/src/Library.js');
+	reactHotLoader.register(Library, 'Library', '/home/sammysaglam/Desktop/delete-me/react-redux-module-boilerplate/src/Library.js');
+	reactHotLoader.register(_default, 'default', '/home/sammysaglam/Desktop/delete-me/react-redux-module-boilerplate/src/Library.js');
 	leaveModule(module);
 })();
 
@@ -299,8 +299,8 @@ var _default = HelloWorld;
 		return;
 	}
 
-	reactHotLoader.register(HelloWorld, 'HelloWorld', '/home/sammysaglam/work/boilerplates/react-redux-module-boilerplate/src/components/HelloWorld/HelloWorld.js');
-	reactHotLoader.register(_default, 'default', '/home/sammysaglam/work/boilerplates/react-redux-module-boilerplate/src/components/HelloWorld/HelloWorld.js');
+	reactHotLoader.register(HelloWorld, 'HelloWorld', '/home/sammysaglam/Desktop/delete-me/react-redux-module-boilerplate/src/components/HelloWorld/HelloWorld.js');
+	reactHotLoader.register(_default, 'default', '/home/sammysaglam/Desktop/delete-me/react-redux-module-boilerplate/src/components/HelloWorld/HelloWorld.js');
 	leaveModule(module);
 })();
 

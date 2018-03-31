@@ -1,13 +1,13 @@
 module.exports = {
 	library: {
 		name: 'Library',
-		filename: 'library'
+		filename: 'library',
 	},
 	reduxLibrary: {
 		name: 'ReduxLibrary',
-		filename: 'library.redux'
+		filename: 'library.redux',
 	},
 	example: {
-		defaultTheme: 'theme-1'
-	}
+		defaultTheme: 'theme-1',
+	},
 };

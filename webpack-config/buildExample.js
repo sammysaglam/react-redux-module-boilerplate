@@ -24,14 +24,14 @@ const buildExample = ({ outputPath, isHotLoaderEnv }) => {
 						'./src/example/entry',
 						...(defaultTheme ? [`./src/themes/${defaultTheme}/${defaultTheme}.scss`] : []),
 						`./src/${moduleSettings.library.name}.scss`,
-						'./src/example/entry.scss'
+						'./src/example/entry.scss',
 				  ]
-				: ['babel-polyfill', './src/example/entry', './src/example/entry.scss']
+				: ['babel-polyfill', './src/example/entry', './src/example/entry.scss'],
 		},
 		output: {
 			path: outputPath,
 			filename: '[name].js',
-			publicPath: 'http://localhost:9032/'
+			publicPath: 'http://localhost:9032/',
 		},
 		devServer: {
 			hotOnly: true,
@@ -42,19 +42,19 @@ const buildExample = ({ outputPath, isHotLoaderEnv }) => {
 			headers: {
 				'Access-Control-Allow-Origin': '*',
 				'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-				'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
-			}
+				'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+			},
 		},
 		module: {
 			rules: [
 				{
 					test: /\.js$/,
 					loader: 'babel-loader',
-					exclude: /node_modules/
+					exclude: /node_modules/,
 				},
 				{
 					test: /\.(png|svg|jpg|jpeg|gif|ttf|woff|eot)$/,
-					loader: 'url-loader'
+					loader: 'url-loader',
 				},
 				{
 					test: /\.(scss|css)$/,
@@ -64,14 +64,14 @@ const buildExample = ({ outputPath, isHotLoaderEnv }) => {
 								loader: 'css-loader',
 								options: {
 									// root:'./'
-								}
+								},
 							},
-							'sass-loader'
+							'sass-loader',
 						],
-						fallback: 'style-loader'
-					})
-				}
-			]
+						fallback: 'style-loader',
+					}),
+				},
+			],
 		},
 		externals: {},
 		plugins: [
@@ -84,24 +84,24 @@ const buildExample = ({ outputPath, isHotLoaderEnv }) => {
 				: [
 						new ImageminPlugin(),
 						new OptimizeCssAssetsPlugin({
-							assetNameRegExp: /\.(scss|css)$/g
+							assetNameRegExp: /\.(scss|css)$/g,
 						}),
 						new UglifyJSPlugin({
 							uglifyOptions: {
 								compress: true,
 								output: {
-									comments: false
-								}
-							}
-						})
-				  ])
+									comments: false,
+								},
+							},
+						}),
+				  ]),
 		],
 		resolve: {
 			alias: {
 				// eslint-disable-next-line no-undef
-				'prop-types$': path.join(__dirname, '../node_modules/axe-prop-types')
-			}
-		}
+				'prop-types$': path.join(__dirname, '../node_modules/axe-prop-types'),
+			},
+		},
 	};
 };
 

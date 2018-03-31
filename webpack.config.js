@@ -15,7 +15,7 @@ module.exports = env => {
 		buildExample({
 			// eslint-disable-next-line no-undef
 			outputPath: path.resolve(__dirname, isHotLoaderEnv ? '' : 'example'),
-			isHotLoaderEnv
+			isHotLoaderEnv,
 		}),
 
 		// build library
@@ -27,8 +27,8 @@ module.exports = env => {
 						outputPath: path.resolve(__dirname, 'dist'),
 						isHotLoaderEnv,
 						isMinified: false,
-						analyzeBuild: false
-					})
+						analyzeBuild: false,
+					}),
 			  ]),
 
 		// minified library
@@ -40,8 +40,8 @@ module.exports = env => {
 						outputPath: path.resolve(__dirname, 'dist'),
 						isHotLoaderEnv,
 						isMinified: true,
-						analyzeBuild
-					})
+						analyzeBuild,
+					}),
 			  ]),
 
 		// redux library
@@ -51,7 +51,7 @@ module.exports = env => {
 					buildReduxLibrary({
 						// eslint-disable-next-line no-undef
 						outputPath: path.resolve(__dirname, 'dist'),
-						isMinified: false
+						isMinified: false,
 					}),
 
 					// minified redux library
@@ -61,10 +61,10 @@ module.exports = env => {
 								buildReduxLibrary({
 									// eslint-disable-next-line no-undef
 									outputPath: path.resolve(__dirname, 'dist'),
-									isMinified: true
-								})
-						  ])
+									isMinified: true,
+								}),
+						  ]),
 			  ]
-			: [])
+			: []),
 	];
 };

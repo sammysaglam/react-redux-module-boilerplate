@@ -20,53 +20,53 @@ const buildLibrary = ({ outputPath, isHotLoaderEnv, isMinified, analyzeBuild }) 
 			[moduleSettings.library.filename]: [
 				...themes.map(themeName => './src/themes/' + themeName + '/' + themeName + '.scss'),
 				`./src/${moduleSettings.library.name}.scss`,
-				`./src/${moduleSettings.library.name}`
-			]
+				`./src/${moduleSettings.library.name}`,
+			],
 		},
 		output: {
 			path: outputPath,
 			filename: `[name]${isMinified ? '.min' : ''}.js`,
 			library: moduleSettings.library.name,
 			libraryTarget: 'umd',
-			umdNamedDefine: true
+			umdNamedDefine: true,
 		},
 		externals: {
 			react: {
 				commonjs: 'react',
 				commonjs2: 'react',
 				amd: 'react',
-				root: 'React'
+				root: 'React',
 			},
 			'react-dom': {
 				commonjs: 'react-dom',
 				commonjs2: 'react-dom',
 				amd: 'react-dom',
-				root: 'ReactDOM'
+				root: 'ReactDOM',
 			},
 			'prop-types': {
 				commonjs: 'prop-types',
 				commonjs2: 'prop-types',
 				amd: 'prop-types',
-				root: 'PropTypes'
+				root: 'PropTypes',
 			},
 			redux: {
 				commonjs: 'redux',
 				commonjs2: 'redux',
 				amd: 'redux',
-				root: 'Redux'
+				root: 'Redux',
 			},
 			'react-redux': {
 				commonjs: 'react-redux',
 				commonjs2: 'react-redux',
 				amd: 'react-redux',
-				root: 'ReactRedux'
+				root: 'ReactRedux',
 			},
 			'redux-thunk': {
 				commonjs: 'redux-thunk',
 				commonjs2: 'redux-thunk',
 				amd: 'redux-thunk',
-				root: 'ReduxThunk'
-			}
+				root: 'ReduxThunk',
+			},
 		},
 		plugins: [
 			...extractThemes,
@@ -77,44 +77,44 @@ const buildLibrary = ({ outputPath, isHotLoaderEnv, isMinified, analyzeBuild }) 
 						new CleanWebpackPlugin('dist', { root: outputPath + '/..' }),
 						new ImageminPlugin(),
 						new OptimizeCssAssetsPlugin({
-							assetNameRegExp: /\.(scss|css)$/g
+							assetNameRegExp: /\.(scss|css)$/g,
 						}),
 						new UglifyJSPlugin({
 							uglifyOptions: {
 								compress: true,
 								output: {
-									comments: false
-								}
-							}
+									comments: false,
+								},
+							},
 						}),
 						...(analyzeBuild
 							? [
 									new BundleAnalyzerPlugin({
-										analyzerMode: 'server'
-									})
+										analyzerMode: 'server',
+									}),
 							  ]
-							: [])
+							: []),
 				  ]
-				: [])
+				: []),
 		],
 		module: {
 			rules: [
 				{
 					test: /\.js$/,
 					loader: 'babel-loader',
-					exclude: /node_modules/
+					exclude: /node_modules/,
 				},
 				{
 					test: /\.(png|svg|jpg|jpeg|gif|ttf|woff|eot)$/,
-					loader: 'url-loader'
+					loader: 'url-loader',
 				},
 				...themes.map((themeName, index) => ({
 					test: new RegExp(themeName + '.scss$'),
 					loader: extractThemes[index].extract({
 						use: ['css-loader', 'sass-loader'],
-						fallback: 'style-loader'
+						fallback: 'style-loader',
 					}),
-					include: /themes/
+					include: /themes/,
 				})),
 				{
 					test: /\.(scss|css)$/,
@@ -124,22 +124,22 @@ const buildLibrary = ({ outputPath, isHotLoaderEnv, isMinified, analyzeBuild }) 
 								loader: 'css-loader',
 								options: {
 									// root:'./'
-								}
+								},
 							},
-							'sass-loader'
+							'sass-loader',
 						],
-						fallback: 'style-loader'
+						fallback: 'style-loader',
 					}),
-					exclude: /themes/
-				}
-			]
+					exclude: /themes/,
+				},
+			],
 		},
 		resolve: {
 			alias: {
 				// eslint-disable-next-line no-undef
-				'prop-types$': path.join(__dirname, '../node_modules/axe-prop-types')
-			}
-		}
+				'prop-types$': path.join(__dirname, '../node_modules/axe-prop-types'),
+			},
+		},
 	};
 };
 
