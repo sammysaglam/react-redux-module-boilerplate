@@ -6,7 +6,7 @@
 		"build": "webpack",
 		"analyze": "webpack --env.analyze=true",
 		"lint": "\"./node_modules/.bin/eslint\" src",
-		"lint-fix": "\"./node_modules/.bin/eslint\" src --fix",
+		"lint:fix": "\"./node_modules/.bin/eslint\" src --fix",
 		"test": "jest",
 		"test:watch": "jest --watchAll",
 		"test:coverage": "jest --coverage"
